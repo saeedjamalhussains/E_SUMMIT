@@ -1,0 +1,186 @@
+.visionPage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--color-bg);
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.quoteWrapper {
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+.quote {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+    color: var(--color-text);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25em;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+    .quote {
+        font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+}
+
+.word {
+    display: inline-block;
+    position: relative;
+}
+
+
+.inauguralMarker {
+    width: fit-content;
+    margin: 0 auto var(--space-lg);
+    padding: 0.5rem 1rem;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    opacity: 1;
+    /* Reset opacity as background provides contrast */
+}
+
+.silentPrinciple {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+}
+
+
+
+.audienceCtx {
+    /* Use global .stripe-box in JSX */
+    grid-column: 1 / -1;
+    min-height: 200px;
+    margin-bottom: var(--space-lg);
+    /* Center align override */
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Specific overrides if needed, otherwise rely on global */
+
+/* boxTitle removed */
+
+.audienceCtx:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.audienceLabel {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    border: none;
+    opacity: 0.8;
+    background: transparent;
+    padding: 0;
+}
+
+.audienceText {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+/* .divider removed - using global .section-divider */
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.columnTitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.01em;
+}
+
+.text {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.whyNowSection {
+    /* text-align: center; removed to use global stripe-box left align */
+    max-width: 100%;
+    /* Allow full width of card */
+    margin: 0 auto;
+    margin-bottom: var(--space-2xl);
+}
+
+.whyNowSection .text {
+    /* margin: 0 auto; removed */
+    max-width: 800px;
+}
+
+.hostingCred {
+    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+    margin-top: var(--space-xl);
+}
+
+@media (max-width: 900px) {
+    .contentGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
+@media (max-width: 320px) {
+    .quote {
+        font-size: 1.5rem !important;
+    }
+
+    .silentPrinciple {
+        font-size: 1.25rem;
+    }
+
+    .contentGrid {
+        gap: 1rem;
+    }
+
+    .audienceCtx,
+    .column {
+        padding: 1.5rem 1rem;
+    }
+}

@@ -1,0 +1,186 @@
+.teaser {
+    background: var(--color-bg);
+    padding: var(--space-2xl) 0;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-md);
+}
+
+.headline {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
+}
+
+.subhead {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--space-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.card {
+    height: 350px;
+    /* Reduced height as we removed large titles/hovers */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align top since labels are there */
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--color-text);
+}
+
+.cardContent {
+    position: relative;
+    z-index: 2;
+}
+
+.cardTitle {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    transform-origin: bottom left;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardDesc {
+    /* Font styles handled by global .stripe-box-text (1.1rem, muted) */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 90%;
+}
+
+.card:hover .cardTitle {
+    transform: translateY(-10px);
+}
+
+.card:hover .cardDesc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cardBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, var(--color-accent-light) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.card:hover .cardBg {
+    opacity: 0.3;
+}
+
+/* Interactivity & Reveal */
+.cardTitle {
+    /* Font styles handled by global .stripe-box-title */
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .cardTitle {
+    transform: translateY(0);
+}
+
+.cardDesc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.1s;
+}
+
+.card:hover .cardDesc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .card {
+        height: auto;
+        min-height: 280px;
+    }
+}
+
+.touchHint {
+    display: none;
+    font-size: 0.9rem;
+    color: #3b82f6;
+    /* Bright blue for visibility */
+    margin-top: 1.5rem;
+    opacity: 1;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 320px) {
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    .headline {
+        font-size: 1.5rem;
+    }
+
+    .subhead {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        min-height: auto;
+        height: auto;
+        padding-bottom: 1rem;
+    }
+
+    .touchHint {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (hover: none) {
+    .touchHint {
+        display: block;
+        animation: pulse 2s infinite;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}

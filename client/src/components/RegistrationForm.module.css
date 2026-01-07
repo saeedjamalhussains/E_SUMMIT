@@ -1,0 +1,263 @@
+/* RegistrationForm.module.css */
+
+.registerPage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    /* Pure White */
+    padding: var(--space-2xl) var(--space-md) var(--space-md);
+    /* Extra top padding for navbar clearance */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.bgNoise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    /* More subtle on white */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bgGlow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    /* Subtle grey/white glow */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.03) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.inner {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 680px;
+    /* Adopting global .stripe-box styles via class composition in JSX */
+}
+
+.header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* .label removed - using global .pill-badge */
+
+.headline {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.subtext {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fieldLabel {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-left: 0.25rem;
+}
+
+.inputWrapper {
+    position: relative;
+    border-radius: var(--radius);
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inputWrapper.focused {
+    background: #FFFFFF;
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.input,
+.select {
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    outline: none;
+    min-height: 48px;
+    /* Touch target size */
+}
+
+.input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.select option {
+    background: #FFF;
+    color: #000;
+}
+
+.actions {
+    margin-top: 1rem;
+    grid-column: 1 / -1;
+}
+
+.button {
+    width: 100%;
+    padding: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    background: #000000;
+    /* Black button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button:hover:not(:disabled) {
+    background: #333333;
+    transform: translateY(-1px);
+}
+
+.button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #FFF;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.errorMessage {
+    padding: 0.75rem;
+    background: rgba(255, 59, 48, 0.05);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+    color: #C62828;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Success State */
+.successMessage {
+    text-align: center;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 20;
+}
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    background: #000;
+    /* Black circle */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    /* White check */
+    margin-bottom: 0.5rem;
+}
+
+.successMessage h3 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: #000;
+}
+
+.successMessage p {
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.5rem;
+}
+
+.buttonOutline {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #000;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.buttonOutline:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 600px) {
+    .inner {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    .headline {
+        font-size: 2rem;
+    }
+}

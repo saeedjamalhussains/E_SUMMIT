@@ -1,0 +1,370 @@
+:root {
+  /* Colors - Clean Minimal Palette */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #FAFAFA;
+  --color-text: #000000;
+  --color-text-muted: #555555;
+  --color-accent: #000000;
+  --color-accent-light: rgba(0, 0, 0, 0.05);
+  --color-border: #E5E5E5;
+
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --radius: 8px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-2xl: 5rem;
+    --space-xl: 4rem;
+    --space-lg: 3rem;
+    --space-md: 1.5rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Section */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 50px;
+  /* Global Pill Shape */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-text);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: var(--space-lg) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* TV / Large Screen Optimization */
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1600px;
+  }
+}
+
+/* Watch / Wearable Optimization (< 320px) */
+@media (max-width: 320px) {
+  :root {
+    --space-2xl: 2rem;
+    --space-xl: 1.5rem;
+    --space-lg: 1rem;
+    --space-md: 0.5rem;
+    --radius: 4px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Hide non-essential decorations */
+  .scroll-connector,
+  .section-divider {
+    display: none !important;
+  }
+}
+
+/* Round Display Support */
+@media screen and (shape: round),
+screen and (max-width: 320px) and (min-height: 320px) {
+  body {
+    /* Center functionality for round screens */
+    text-align: center;
+    /* Simulate safe area for browsers that don't support shape: round */
+    padding: 10% 5%;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Global Utilities */
+
+/* Scroll Connector */
+.scroll-connector {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-text), transparent);
+  margin: 0 auto var(--space-lg);
+  transform-origin: top;
+  opacity: 0.6;
+}
+
+/* Stripe Box / Card Style */
+.stripe-box {
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8) 10px,
+      rgba(250, 250, 250, 0.8) 10px,
+      rgba(250, 250, 250, 0.8) 20px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.stripe-box:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.stripe-box-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  border: none;
+  opacity: 0.8;
+  background: transparent;
+  padding: 0;
+}
+
+.stripe-box-text {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+.stripe-box-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+/* Global Component Utilities */
+
+/* Pill Badge */
+.pill-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--font-body);
+}
+
+/* Highlight Quote */
+.highlight-quote {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+  font-style: italic;
+  letter-spacing: 0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25em;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Global Section Divider */
+.section-divider {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-xl) auto;
+  transform-origin: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* Global Scroll Connector */
+.scroll-connector {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-text), transparent);
+  margin: 0 auto;
+  transform-origin: top;
+  opacity: 0.6;
+}

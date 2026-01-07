@@ -1,0 +1,167 @@
+.navbar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 1rem 4rem;
+    min-width: 600px;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.95) 10px,
+            rgba(250, 250, 250, 0.95) 10px,
+            rgba(250, 250, 250, 0.95) 20px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.link {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.link:hover {
+    color: var(--color-text);
+}
+
+.link.active {
+    color: var(--color-text);
+}
+
+.link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 50%;
+}
+
+/* .cta removed - using global .btn-primary in JSX */
+
+@media (max-width: 768px) {
+    .navbar {
+        /* Reset container to invisible wrapper */
+        position: static;
+        width: auto;
+        max-width: none;
+        min-width: auto;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        transform: none;
+        left: auto;
+        top: auto;
+    }
+
+    .brand {
+        /* Header Banner Style */
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: 101;
+        text-align: center;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--color-text);
+        margin-right: 0;
+    }
+
+    .links {
+        /* Bottom Pill Style */
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 101;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 1.5rem;
+
+        width: calc(100% - 2rem);
+        max-width: 350px;
+        padding: 0.75rem 1rem;
+        /* Reduced horizontal padding */
+
+        /* Glassmorphism Pill */
+        background: repeating-linear-gradient(45deg,
+                rgba(255, 255, 255, 0.95),
+                rgba(255, 255, 255, 0.95) 10px,
+                rgba(250, 250, 250, 0.95) 10px,
+                rgba(250, 250, 250, 0.95) 20px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 320px) {
+    .links {
+        display: none !important;
+    }
+
+    .brand {
+        position: static;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        margin-bottom: 0;
+    }
+
+    .navbar {
+        position: relative;
+        padding: 0;
+        margin-bottom: 0;
+        height: auto;
+    }
+}

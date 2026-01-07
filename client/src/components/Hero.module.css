@@ -1,0 +1,118 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+    /* Add top and bottom padding to balance layout and avoid overlap */
+}
+
+/* Background/Parallax Elements could go here */
+
+.content {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+}
+
+/* .badge removed - using global .pill-badge */
+
+.title {
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+    max-width: 900px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin-bottom: var(--space-lg);
+}
+
+.ctaGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: var(--space-2xl);
+}
+
+/* .divider removed - using global .section-divider */
+
+.quoteWrapper {
+    margin-top: var(--space-2xl);
+    /* Increased from lg to 2xl to clear the moved-up divider */
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+/* .quote removed - using global .highlight-quote */
+
+/* .badge removed - using global .pill-badge */
+
+/* .quote styles removed */
+.word {
+    display: inline-block;
+    position: relative;
+}
+
+.word {
+    display: inline-block;
+    position: relative;
+}
+
+/* .registerBtn removed - using global .btn-primary */
+
+/* Marquee Scroller */
+/* ... */
+
+@media (max-width: 320px) {
+    .hero {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        min-height: auto;
+    }
+
+    .title {
+        font-size: 1.75rem !important;
+        /* Hard override for watch legibility */
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .ctaGroup {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ctaGroup>* {
+        width: 100%;
+        /* Full width buttons */
+    }
+}
